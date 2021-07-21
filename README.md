@@ -28,7 +28,6 @@ Advanace Mode
 xhost +local:root
 
 sudo docker run --gpus all -it \
-    --volume="~/usman_ws:/home/leo/" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix 
     --env DISPLAY=$DISPLAY \
     --env="QT_X11_NO_MITSHM=1" \
@@ -36,6 +35,8 @@ sudo docker run --gpus all -it \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
+
+    --volume="~/usman_ws:/home/leo/" \
     --name ros \
     ros-melodic-vins /bin/bash
 
