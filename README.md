@@ -2,7 +2,8 @@ Official Documention [ROS](http://wiki.ros.org/docker/Tutorials/Docker)
 
 ## Build Image
 
-If you didn't have docker install, please follow 
+If you didn't have docker install, please [follow](#install-docker-on-ubuntu-2004) 
+
 ```sh
 #docker build -t my_first_image [location of your dockerfile]
 git clone https://github.com/UsmanMaqbool/nvidia-docker2-melodic-vins
@@ -10,6 +11,35 @@ cd nvidia-docker2-melodic-vins
 docker build -t docker2-vins-melodic .
 ```
 
+
+
+## Creating container from image
+
+simple way
+
+```sh
+chmod a+x run.sh
+./sh
+```
+
+Advanace Mode
+
+```sh
+xhost +local:root
+
+sudo docker run --gpus all -it \
+    --volume="~/usman_ws:/home/leo/" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix 
+    --env DISPLAY=$DISPLAY \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --env="XAUTHORITY=$XAUTH" \
+    --volume="$XAUTH:$XAUTH" \
+    --runtime=nvidia \
+    --name ros \
+    ros-melodic-vins /bin/bash
+
+```
 
 ## Install docker on Ubuntu 20.04
 [link](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
