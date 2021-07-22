@@ -20,6 +20,5 @@ docker run -it \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
-
     docker2-vins-melodic \
     bash

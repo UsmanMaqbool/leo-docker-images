@@ -18,7 +18,10 @@ docker build -t docker2-vins-melodic .
 simple way
 
 ```sh
+
 chmod a+x run.sh
+xhost +local:root
+
 ./sh
 ```
 
@@ -28,19 +31,21 @@ Advanace Mode
 xhost +local:root
 
 sudo docker run --gpus all -it \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix 
-    --env DISPLAY=$DISPLAY \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
+    --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
-
-    --volume="~/usman_ws:/home/leo/" \
+    \
+    --volume="/home/leo/usman_ws/:/app/" \
     --name ros \
-    ros-melodic-vins /bin/bash
+    docker2-vins-melodic /bin/bash
 
 ```
+
+
+
 
 ## Install docker on Ubuntu 20.04
 [link](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
