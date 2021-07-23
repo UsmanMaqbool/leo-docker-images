@@ -65,7 +65,7 @@ ENV CERES_VERSION="1.12.0"
 # Configure ROS
 #RUN rosdep init && rosdep update 
 RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc
-RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
+RUN echo "source /container_ws/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
 
 RUN   if [ "x$(nproc)" = "x1" ] ; then export USE_PROC=1 ; \

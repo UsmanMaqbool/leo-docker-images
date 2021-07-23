@@ -8,7 +8,7 @@ If you didn't have docker install, please [follow](#install-docker-on-ubuntu-200
 #docker build -t my_first_image [location of your dockerfile]
 git clone https://github.com/UsmanMaqbool/nvidia-docker2-melodic-vins
 cd nvidia-docker2-melodic-vins
-docker build -t docker2-vins-melodic .
+docker build -t docker2-ros-melodic-vins .
 ```
 
 
@@ -38,10 +38,10 @@ sudo docker run --gpus all -it \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
     \
-    --workdir="/root/" \
-    --volume="/home/leo/usman_ws/:/root/" \
-    --name ros \
-    docker2-vins-melodic /bin/bash
+    --workdir="/container_ws/" \
+    --volume="/home/leo/usman_ws/:/container_ws/" \
+    --name="ros" \
+    docker2-ros-melodic-vins /bin/bash
 
 ```
 
