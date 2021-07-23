@@ -44,7 +44,18 @@ sudo docker run --gpus all -it \
 
 ```
 
+**To Start**
+```sh
+docker exec -it ros /bin/bash
+```
 
+## VINS Mono
+
+```sh
+cd PATH-TO-CATKIN_WS/src
+git clone https://github.com/HKUST-Aerial-Robotics/VINS-Mono.git
+cd ../ && catkin_make
+```
 
 
 ## Install docker on Ubuntu 20.04
