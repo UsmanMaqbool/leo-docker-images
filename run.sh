@@ -11,14 +11,17 @@ then
     chmod a+r $XAUTH
 fi
 
-## TODO ADD CATKIN + NAME
+xhost +local:root
 
-docker run -it \
+sudo docker run --gpus all -it \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
-    docker2-vins-melodic \
-    bash
+    \
+    --workdir="/root/" \
+    --volume="/home/leo/usman_ws/:/root/" \ #Link Folder
+    --name ros \ # Choose Name
+    docker2-vins-melodic /bin/bash
