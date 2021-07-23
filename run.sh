@@ -21,7 +21,6 @@ sudo docker run --gpus all -it \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
     \
-    --workdir="/container_ws/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
     --name="ros" \
     docker2-ros-melodic-vins /bin/bash

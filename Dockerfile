@@ -60,7 +60,7 @@ RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full \
     && rm -rf /var/lib/apt/lists/*
-ENV CERES_VERSION="1.12.0"
+ENV CERES_VERSION="1.14.0"
 
 # Configure ROS
 #RUN rosdep init && rosdep update 
