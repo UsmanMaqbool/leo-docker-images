@@ -22,7 +22,7 @@ simple way
 chmod a+x run.sh
 xhost +local:root
 
-./sh
+./run.sh
 ```
 
 Advanace Mode
