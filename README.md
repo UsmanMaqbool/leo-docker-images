@@ -9,6 +9,8 @@ If you didn't have docker install, please [follow](#install-docker-on-ubuntu-200
 git clone https://github.com/UsmanMaqbool/nvidia-docker2-melodic-vins
 cd nvidia-docker2-melodic-vins
 docker build -t docker2-ros-melodic-vins .
+# or try
+docker build -t opencv3-py3-gpu - < Dockerfile-py3-cuda
 ```
 
 
@@ -57,6 +59,10 @@ cd PATH-TO-CATKIN_WS/src
 git clone https://github.com/HKUST-Aerial-Robotics/VINS-Mono.git
 cd ../ && catkin_make
 ```
+
+## AR Demo
+
+
 
 
 ## Install docker on Ubuntu 20.04
