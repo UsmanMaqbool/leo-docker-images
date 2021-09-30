@@ -1,6 +1,7 @@
 # https://www.learnopencv.com/install-opencv3-on-ubuntu/
 
 FROM nvidia/cuda:10.1-devel-ubuntu18.04
+FROM nvidia/cuda:11.1-devel-ubuntu18.04
 LABEL maintainer "usmanmaqbool@outlook.com"
 ENV OPENCV_VERSION 3.4.2
 
@@ -24,7 +25,8 @@ RUN apt-get -y update && \
         libjpeg-dev \
         libpng-dev \
         libtiff-dev \
-        libv4l-dev \
+        libv4l-dev \ 
+        libgl1-mesa-glx \
     && \
 
 # install python dependencies
