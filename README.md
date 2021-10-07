@@ -10,7 +10,7 @@ git clone https://github.com/UsmanMaqbool/nvidia-docker2-melodic-vins
 cd nvidia-docker2-melodic-vins
 docker build -t docker2-ros-melodic-vins .
 # or try
-docker build -t opencv3-py3-gpu - < Dockerfile-py3-cuda
+docker build -t opencv3-py3-cuda11-torch - < Dockerfile-py3-cuda
 ```
 
 

@@ -1,6 +1,6 @@
 # https://www.learnopencv.com/install-opencv3-on-ubuntu/
 
-FROM nvidia/cuda:10.1-devel-ubuntu18.04
+# FROM nvidia/cuda:10.1-devel-ubuntu18.04
 FROM nvidia/cuda:11.1-devel-ubuntu18.04
 LABEL maintainer "usmanmaqbool@outlook.com"
 ENV OPENCV_VERSION 3.4.2
@@ -60,7 +60,7 @@ RUN apt-get -y update && \
       -D WITH_IPP=OFF \
       -D WITH_FFMPEG=ON \
       -D WITH_CUDA=ON \
-      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-8.0 \
+      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.1 \
       -D WITH_CUBLAS=ON \
       -D WITH_V4L=ON .. \
     && \
@@ -87,7 +87,8 @@ RUN apt-get -y update && \
         libv4l-dev \
     && \
     apt-get clean && \
-    rm -rf /opencv /opencv_contrib /var/lib/apt/lists/*
-
+    rm -rf /opencv /opencv_contrib /var/lib/apt/lists/* \
+    #echo "alias vps='ssh -X user@example.com'" >> ~/.bashrc
+    echo "python=python3" >> ~/.bashrc
 # Define default command.
 #CMD ["python3", "--version"]
