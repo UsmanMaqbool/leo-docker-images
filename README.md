@@ -43,11 +43,15 @@ sudo docker run --gpus all -it \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
+    --publish=8001:8888 \
+    --publish=6001:6006 \
     \
     --workdir="/container_ws/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
-    --name="ros" \
-    docker2-ros-melodic-vins /bin/bash
+    --volume="/mnt/ssd/usman_ws/datasets/place-recognition/ :/dataset/" \
+    --name="maqbool" \
+    \
+    py3-opencv3-cuda11-torch /bin/bash
 
 ```
 
