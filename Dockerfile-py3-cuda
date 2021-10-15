@@ -60,7 +60,7 @@ RUN apt-get -y update && \
       -D WITH_IPP=OFF \
       -D WITH_FFMPEG=ON \
       -D WITH_CUDA=ON \
-      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.1 \
+      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-8.0 \
       -D WITH_CUBLAS=ON \
       -D WITH_V4L=ON .. \
     && \
@@ -87,8 +87,9 @@ RUN apt-get -y update && \
         libv4l-dev \
     && \
     apt-get clean && \
-    rm -rf /opencv /opencv_contrib /var/lib/apt/lists/* \
-    #echo "alias vps='ssh -X user@example.com'" >> ~/.bashrc
-    echo "python=python3" >> ~/.bashrc
+    rm -rf /opencv /opencv_contrib /var/lib/apt/lists/* && \
+    echo "alias python=python3" >> ~/.bashrc
+
 # Define default command.
 #CMD ["python3", "--version"]
+#echo "alias vps='ssh -X user@example.com'" >> ~/.bashrc
