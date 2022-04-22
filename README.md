@@ -36,11 +36,11 @@ sudo docker run --gpus all -it \
     \
     --workdir="/container_ws/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
-    --volume="/mnt/ssd/usman_ws/datasets/place-recognition/ :/dataset/" \
+    --volume="/mnt/ssd/usman_ws/datasets/maqbool-datasets/datasets-place-recognition/:/dataset/" \
+    --volume="/mnt/ssd/usman_ws/datasets/place-recognition/:/results/" \
     --name="maqbool" \
     \
-    py3-opencv3-cuda11-torch /bin/bash
-
+    opencv3-py3-cuda11-torch /bin/bash
 ```
 
 **To Start**

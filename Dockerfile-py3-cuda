@@ -1,7 +1,7 @@
 # https://www.learnopencv.com/install-opencv3-on-ubuntu/
 
 # FROM nvidia/cuda:10.1-devel-ubuntu18.04
-FROM nvidia/cuda:11.1-devel-ubuntu18.04
+FROM nvidia/cuda:11.6.2-devel-ubuntu18.04
 LABEL maintainer "usmanmaqbool@outlook.com"
 ENV OPENCV_VERSION 3.4.2
 
@@ -28,14 +28,12 @@ RUN apt-get -y update && \
         libv4l-dev \ 
         libgl1-mesa-glx \
     && \
-
 # install python dependencies
-    wget https://bootstrap.pypa.io/get-pip.py && \
+    wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
     python3 get-pip.py && \
     rm get-pip.py && \
     pip3 install numpy \
     && \
-
 # Install OpenCV
     wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip -O opencv3.zip && \
     unzip -q opencv3.zip && \
@@ -46,7 +44,6 @@ RUN apt-get -y update && \
     mv /opencv_contrib-$OPENCV_VERSION /opencv_contrib && \
     rm opencv_contrib3.zip \
     && \
-
 # Prepare build
     mkdir /opencv/build && cd /opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -64,14 +61,12 @@ RUN apt-get -y update && \
       -D WITH_CUBLAS=ON \
       -D WITH_V4L=ON .. \
     && \
-
 # Install
     cd /opencv/build && \
     make -j$(nproc) && \
     make install && \
     ldconfig \
     && \
-
 # Clean
    apt-get -y remove \
         python3-dev \
@@ -88,8 +83,10 @@ RUN apt-get -y update && \
     && \
     apt-get clean && \
     rm -rf /opencv /opencv_contrib /var/lib/apt/lists/* && \
-    echo "alias python=python3" >> ~/.bashrc
-
+    echo "alias python=python3" >> ~/.bashrc \
+#    pip3 install scikit-learn h5py ibllib IBL-pipeline && \
+#    pip3 install --upgrade torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html && \
+#    python setup.py develop
 # Define default command.
 #CMD ["python3", "--version"]
 #echo "alias vps='ssh -X user@example.com'" >> ~/.bashrc
