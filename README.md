@@ -4,6 +4,8 @@ Docker Image Name | Description | Build Image | Projects
 ---------|----------|---------|--------
 `Dockerfile` | Cuda 11/9, OpenCV3, python3, rosmelodic, ceres-solver, cmake, ubuntu18 | `docker build -t docker2-ros-melodic-vins .` | [ROS](http://wiki.ros.org/docker/Tutorials/Docker)
 `opencv3-py3-cuda11-torch` | Cuda 11/9, OpenCV, python3 | `docker build -t opencv3-py3-cuda11-torch - < Dockerfile-py3-cuda` | OpenIBO 
+`ubuntu18-nocuda-slam` | NoCUDA, OpenCV, python3 | `docker build -t ubuntu18-nocuda-slam - < Dockerfile-nocuda-slam` | OpenIBO 
+
 
 ## Creating container from image
 
