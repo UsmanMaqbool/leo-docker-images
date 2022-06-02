@@ -48,20 +48,18 @@ xhost +local:root
 
 sudo docker run -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
-    --vokume="/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu" \
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
-    
-    --publish=8001:8888 \
-    --publish=6001:6006 \
+    --publish=8002:8888 \
+    --publish=6002:6006 \
     \
     --workdir="/container_ws/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
-    --name="nocuda-slam" \
+    --name="nocuda-slam2" \
     \
-    ubuntu18-nocuda-slam:latest /bin/bash
+    ubuntu18-nocuda-slam2:latest /bin/bash
 ```
 
 **To Start**
