@@ -42,7 +42,7 @@ sudo docker run --gpus all -it \
     --volume="/mnt/ssd/usman_ws/datasets/place-recognition/:/results/" \
     --name="maqbool" \
     \
-    opencv3-py3-cuda11-torch /bin/bash
+    opencv3-py3-cuda11-6-torch /bin/bash
 
 xhost +local:root
 

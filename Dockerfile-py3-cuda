@@ -67,8 +67,61 @@ RUN apt-get -y update && \
     make install && \
     ldconfig \
     && \
+#Eigen Install
+    cd /tmp/ && apt-get -y update && \
+#    apt-get -y install libeigen2.dev && \
+#    apt-get -y install libeigen3.dev && \
+    wget https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip && \
+    unzip eigen-3.3.7.zip  && \
+    cd eigen-3.3.7 && \
+    mkdir build && \
+    cd build/ && \
+    cmake ../ && \
+    make && \
+    make install && \
+    cd /usr/local/include/ && \
+    ln -sf  eigen3/Eigen/ Eigen && \
+    ldconfig && \
+#Pangolin Install
+    cd /tmp/ && apt-get -y update && \
+    apt-get -y install libglew-dev && \
+    apt-get -y install libboost-dev libboost-thread-dev libboost-filesystem-dev && \
+    apt-get -y install ffmpeg libavcodec-dev libavutil-dev libavformat-dev libswscale-dev && \
+    apt-get -y install libpng-dev && \
+    git clone https://github.com/stevenlovegrove/Pangolin.git && \
+    cd Pangolin && \
+    mkdir build && cd build && \
+    cmake -DCPP11_NO_BOOST=1 .. && \
+    make -j && \
+    make install && \
+    ldconfig && \
+#Sophus
+    #fmt
+    cd /tmp/ && apt-get -y update && \
+    wget https://github.com/fmtlib/fmt/releases/download/8.1.1/fmt-8.1.1.zip && \
+    unzip fmt-8.1.1.zip && \
+    cd fmt-8.1.1 && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install && \
+    #Ceres Install
+    cd /tmp/ && apt-get -y update && \
+    apt-get -y install libgoogle-glog-dev libgflags-dev && \
+    # Use ATLAS for BLAS & LAPACK
+    apt-get -y install libatlas-base-dev && \
+    # Eigen3
+    apt-get -y install libeigen3-dev && \
+    # SuiteSparse and CXSparse (optional)
+    apt-get -y install libsuitesparse-dev && \
+    git clone https://ceres-solver.googlesource.com/ceres-solver && \
+    cd ceres-solver && mkdir build && cd build && cmake .. && make && make install && \
+    #Sophus Install
+    cd /tmp/ && git clone https://github.com/strasdat/Sophus && cd Sophus && mkdir build && cd build && cmake .. && make && make install && \
+    ldconfig && \
 # Clean
-   apt-get -y remove \
+    apt-get -y remove \
         python3-dev \
         libatlas-base-dev \
         gfortran \
@@ -83,7 +136,7 @@ RUN apt-get -y update && \
     && \
     apt-get clean && \
     rm -rf /opencv /opencv_contrib /var/lib/apt/lists/* && \
-    echo "alias python=python3" >> ~/.bashrc \
+    echo "alias python=python3" >> ~/.bashrc 
 #    pip3 install scikit-learn h5py ibllib IBL-pipeline && \
 #    pip3 install --upgrade torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html && \
 #    python setup.py develop

@@ -109,8 +109,7 @@ RUN apt-get -y update && \
     apt-get -y install libeigen3-dev && \
     # SuiteSparse and CXSparse (optional)
     apt-get -y install libsuitesparse-dev && \
-    git clone https://ceres-solver.googlesource.com/ceres-solver 
-    
+    git clone https://ceres-solver.googlesource.com/ceres-solver && \    
     cd ceres-solver && mkdir build && cd build && cmake .. && make && make install && \
     #Sophus Install
     cd /tmp/ && git clone https://github.com/strasdat/Sophus && cd Sophus && mkdir build && cd build && cmake .. && make && make install && \
