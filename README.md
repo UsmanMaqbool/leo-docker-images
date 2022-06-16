@@ -24,6 +24,8 @@ xhost +local:root
 ### Advanace Mode
 
 ```sh
+docker build -t opencv3-py3-cuda10_1 - < Dockerfile-py3-cuda10
+
 xhost +local:root
 
 sudo docker run --gpus all -it \
@@ -33,16 +35,16 @@ sudo docker run --gpus all -it \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
-    --publish=8001:8888 \
-    --publish=6001:6006 \
+    --publish=8004:8888 \
+    --publish=6004:6006 \
     \
     --workdir="/container_ws/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
     --volume="/mnt/ssd/usman_ws/datasets/maqbool-datasets/datasets-place-recognition/:/dataset/" \
     --volume="/mnt/ssd/usman_ws/datasets/place-recognition/:/results/" \
-    --name="maqbool" \
+    --name="opencv3-py3-cuda" \
     \
-    opencv3-py3-cuda11-6-torch /bin/bash
+    opencv3-py3-cuda10_1 /bin/bash
 
 xhost +local:root
 
