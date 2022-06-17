@@ -35,16 +35,17 @@ sudo docker run --gpus all -it \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
     --runtime=nvidia \
-    --publish=8004:8888 \
-    --publish=6004:6006 \
+    --publish=8005:8888 \
+    --publish=6005:6006 \
     \
     --workdir="/container_ws/" \
+    --volume="/usr/lib/nvidia/:/usr/lib/nvidia/" \
     --volume="/home/leo/usman_ws/:/container_ws/" \
     --volume="/mnt/ssd/usman_ws/datasets/maqbool-datasets/datasets-place-recognition/:/dataset/" \
     --volume="/mnt/ssd/usman_ws/datasets/place-recognition/:/results/" \
-    --name="opencv3-py3-cuda" \
+    --name="opencv3-py3-cuda11" \
     \
-    opencv3-py3-cuda10_1 /bin/bash
+    opencv3-py3-cuda11_5 /bin/bash
 
 xhost +local:root
 
@@ -61,7 +62,7 @@ sudo docker run -it \
     --volume="/home/leo/usman_ws/:/container_ws/" \
     --name="nocuda-slam2" \
     \
-    ubuntu18-nocuda-slam2:latest /bin/bash
+    opencv3-py3-cuda11_5:latest /bin/bash
 ```
 
 **To Start**
